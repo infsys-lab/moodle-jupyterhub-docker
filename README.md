@@ -1,4 +1,4 @@
-# jupyterhub-docker
+# moodle-jupyterhub-docker
 
 This repository documents a dockerized JupyterHub build with docker-spawned individual Jupyter servers. This project has been adapted from the existing [`jupyterhub-deploy-docker`](https://github.com/jupyterhub/jupyterhub-deploy-docker) repository, which is distributed under the [BSD 3-Clause License](THIRD_PARTY_NOTICES).
 
