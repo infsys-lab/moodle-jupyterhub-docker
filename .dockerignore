@@ -1,3 +1,7 @@
-.git
+.git/
+moodle_courses/
 .gitignore
 README.md
+LICENSE.txt
+THIRD_PARTY_NOTICES.txt
+Makefile
