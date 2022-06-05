@@ -35,7 +35,7 @@ To create and start relevant containers, simply execute:
 $ make up
 ```
 
-This will detach as a background process and it can take several minutes for the installation of Moodle to finish. Open `http://localhost` in your browser to access the Moodle UI.
+This will detach as a background process and it can take several minutes for the installation of Moodle to finish. Open [`http://localhost`](http://localhost) in your browser to access the Moodle UI.
 
 </p></details>
 <details><summary>Log</summary><p> 
