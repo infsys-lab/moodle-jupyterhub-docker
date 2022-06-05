@@ -99,7 +99,7 @@ Follow the instructions below to test LTI authentication from Moodle to JupyterH
 
 5. Navigate to **Site home** and select the **Test** course. 
 
-6. Select **Turn editing on** and select **Edit** > **Edit settings** options corresponding to the green puzzle-shaped icon with the **JupyterHub** tag
+6. Select **Turn editing on** and select **Edit** > **Edit settings** options corresponding to the green puzzle-shaped icon with the **JupyterHub** tag.
 
 7. Then select the :gear: button in the **Preconfigured tool** field.
 
