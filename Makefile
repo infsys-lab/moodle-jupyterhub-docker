@@ -38,9 +38,9 @@ jupyterhub/secrets/lti.secret:
 build: network volumes
 build: jupyterhub/secrets/postgres.env jupyterhub/secrets/admins
 build: jupyterhub/secrets/lti.key jupyterhub/secrets/lti.secret
-	docker build -t $(LOCAL_NOTEBOOK_NAME) \
-		--build-arg JUPYTERHUB_VERSION=$(JUPYTERHUB_VERSION) \
-		--build-arg DOCKER_NOTEBOOK_IMAGE=$(DOCKER_NOTEBOOK_IMAGE) \
+	docker build -t "$(LOCAL_NOTEBOOK_NAME)" \
+		--build-arg JUPYTERHUB_VERSION="$(JUPYTERHUB_VERSION)" \
+		--build-arg DOCKER_NOTEBOOK_IMAGE="$(DOCKER_NOTEBOOK_IMAGE)" \
 		singleuser
 	docker-compose build
 	docker image prune -f
