@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+auto_update_conda: false
+show_channel_urls: true
+envs_dirs:
+  - /home/jovyan/conda_envs

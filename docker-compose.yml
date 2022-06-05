@@ -1,0 +1,101 @@
+# Copyright (c) Atreya Shankar
+# Distributed under the terms of the MIT License.
+# Copyright (c) Jupyter Development Team
+# Distributed under the terms of the Modified BSD License.
+
+version: "3"
+
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.6
+    container_name: moodle-db
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=bn_moodle
+      - MARIADB_DATABASE=bitnami_moodle
+      - MARIADB_CHARACTER_SET=utf8mb4
+      - MARIADB_COLLATE=utf8mb4_unicode_ci
+    volumes:
+      - "moodle-db-data:${MOODLE_DB_VOLUME_CONTAINER}"
+
+  moodle:
+    image: docker.io/bitnami/moodle:3
+    container_name: moodle
+    ports:
+      - "80:8080"
+    environment:
+      - MOODLE_USERNAME=${ADMIN}
+      - MOODLE_PASSWORD=password
+      - MOODLE_EMAIL=admin@example.com
+      - MOODLE_DATABASE_HOST=mariadb
+      - MOODLE_DATABASE_PORT_NUMBER=3306
+      - MOODLE_DATABASE_USER=bn_moodle
+      - MOODLE_DATABASE_NAME=bitnami_moodle
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - "moodle-main-data:${MOODLE_MAIN_VOLUME_CONTAINER}"
+      - "moodle-other-data:${MOODLE_OTHER_VOLUME_CONTAINER}"
+    depends_on:
+      - mariadb
+
+  hub-db:
+    image: postgres:9.6
+    container_name: jupyterhub-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: ${JH_DB_VOLUME_CONTAINER}
+    env_file:
+      - jupyterhub/secrets/postgres.env
+    volumes:
+      - "jupyterhub-db-data:${JH_DB_VOLUME_CONTAINER}"
+
+  hub:
+    depends_on:
+      - hub-db
+    build:
+      context: ./jupyterhub
+      dockerfile: Dockerfile
+      args:
+        JUPYTERHUB_VERSION: ${JUPYTERHUB_VERSION}
+    restart: always
+    image: jupyterhub
+    container_name: jupyterhub
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+      - "jupyterhub-data:${JH_DATA_VOLUME_CONTAINER}"
+    ports:
+      - "8080:8080"
+    links:
+      - hub-db
+    environment:
+      DOCKER_NETWORK_NAME: ${DOCKER_NETWORK_NAME}
+      DOCKER_NOTEBOOK_IMAGE: ${LOCAL_NOTEBOOK_NAME}
+      DOCKER_NOTEBOOK_DIR: ${DOCKER_NOTEBOOK_DIR}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: hub-db
+    env_file:
+      - jupyterhub/secrets/postgres.env
+    command: >
+      jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
+
+volumes:
+  jupyterhub-data:
+    name: ${JH_DATA_VOLUME_HOST}
+    external: true
+  jupyterhub-db-data:
+    name: ${JH_DB_VOLUME_HOST}
+    external: true
+  moodle-db-data:
+    name: ${MOODLE_DB_VOLUME_HOST}
+    external: true
+  moodle-main-data:
+    name: ${MOODLE_MAIN_VOLUME_HOST}
+    external: true
+  moodle-other-data:
+    name: ${MOODLE_OTHER_VOLUME_HOST}
+    external: true
+
+networks:
+  default:
+    name: ${DOCKER_NETWORK_NAME}
