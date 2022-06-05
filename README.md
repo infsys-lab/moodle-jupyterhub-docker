@@ -76,3 +76,35 @@ $ make clean
 ```
 
 </p></details>
+
+## Guide :book:
+
+Follow the instructions below to test LTI authentication from Moodle to JupyterHub:
+
+1. Execute the following to launch all docker services:
+
+    ```
+    $ make up
+    ```
+
+    **Note:** The installation of Moodle can take several minutes to complete. Execute `make log` to view live installation logs.
+
+2. Open [`http://localhost`](http://localhost) in your browser and log in with `admin` as the username and `password` as the password.
+
+3. After logging in, select the following sequence of options:
+
+    **Site home** > :gear: > **Restore** > **Choose a file** > **Upload a file** > Navigate filesystem and select `moodle-courses/lti_template.mbz` > **Upload this file** > **Restore**
+    
+4. You will then be directed to a set of pages to refine how the restoration is done. Select the option to **Restore as a new course**. Finally, select **Perform restore**.
+
+5. Navigate to **Site home** and select the **Test** course. 
+
+6. Select **Turn editing on** and select **Edit** > **Edit settings** options corresponding to the green puzzle-shaped icon with the **JupyterHub** tag
+
+7. Then select the :gear: button in the **Preconfigured tool** field.
+
+8. Copy the LTI client key from `jupyterhub/secrets/lti.key` and paste it in the **Consumer key** field. Copy the LTI shared secret from `jupyterhub/secrets/lti.secret` and paste it in the **Shared secret** field.
+
+9. Select **Save changes** and then return to the **Test** course.
+
+10. Select the green puzzle-shaped icon with the **JupyterHub** tag and you will be authenticated to `jupyterhub` as the `admin` user.
