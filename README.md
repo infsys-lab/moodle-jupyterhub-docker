@@ -20,7 +20,7 @@ $ make build
 
 The following will be generated and dumped as files in `jupyterhub/secrets/`:
 
-1. A randomized `postgres` password for the `jupyterhub` database
+1. A randomly generated `postgres` password for the `jupyterhub` database
 2. A randomly generated LTI client key and shared secret
 3. An admins file for granting administrative rights to the `admin` user
 
