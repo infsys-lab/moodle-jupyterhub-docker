@@ -69,7 +69,7 @@ $ make restart
 </p></details>
 <details><summary>Clean</summary><p> 
 
-To stop and remove previously created docker containers, networks, volumes and secret data, simply execute.
+To stop and remove previously created docker containers, networks, volumes and secret data, simply execute:
 
 ```
 $ make clean
