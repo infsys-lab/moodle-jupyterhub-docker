@@ -2,6 +2,6 @@
 moodle_courses/
 .gitignore
 README.md
-LICENSE.txt
-THIRD_PARTY_NOTICES.txt
+LICENSE
+THIRD_PARTY_NOTICES
 Makefile

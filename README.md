@@ -1,6 +1,6 @@
 # moodle-jupyterhub-docker
 
-This repository documents a docker sandbox environment to test integration between the [Moodle](https://moodle.org/) LMS and [JupyterHub](https://jupyter.org/hub) and was extensively used to test LTI (v1.1) authentication from Moodle to JupyterHub using the LTI [Authenticator](https://github.com/jupyterhub/ltiauthenticator) library. This repository was adapted from the existing [`jupyterhub-deploy-docker`](https://github.com/jupyterhub/jupyterhub-deploy-docker) project, which is distributed under the [BSD 3-Clause License](THIRD_PARTY_NOTICES.txt). In addition, docker images for the Moodle LMS were pulled from [Bitnami](https://hub.docker.com/u/bitnami). 
+This repository documents a docker sandbox environment to test integration between the [Moodle](https://moodle.org/) LMS and [JupyterHub](https://jupyter.org/hub) and was extensively used to test LTI (v1.1) authentication from Moodle to JupyterHub using the LTI [Authenticator](https://github.com/jupyterhub/ltiauthenticator) library. This repository was adapted from the existing [`jupyterhub-deploy-docker`](https://github.com/jupyterhub/jupyterhub-deploy-docker) project, which is distributed under the [BSD 3-Clause License](THIRD_PARTY_NOTICES). In addition, docker images for the Moodle LMS were pulled from [Bitnami](https://hub.docker.com/u/bitnami). 
 
 **Disclaimer:** The source code in this repository is meant solely for testing purposes and is not designed for production use.
 
