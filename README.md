@@ -95,7 +95,7 @@ Follow the instructions below to test LTI authentication from Moodle to JupyterH
 
     **Site home** > :gear: > **Restore** > **Choose a file** > **Upload a file** > Navigate filesystem and select `moodle-courses/lti_template.mbz` > **Upload this file** > **Restore**
     
-4. You will then be directed to a set of pages to refine how the restoration is done. Select the option to **Restore as a new course**. Finally, select **Perform restore**.
+4. You will then be directed to a set of pages to refine how the restoration is done. On page *2. Destination*, select the option to continue via **Restore as a new course**. Update preferences or accept defaults on pages 3-5. If all goes well, select **Perform restore** on page 5.
 
 5. Navigate to **Site home** and select the **Test** course. 
 
