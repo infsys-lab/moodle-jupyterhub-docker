@@ -8,7 +8,8 @@ include .env
 .DEFAULT_GOAL=build
 
 network:
-	docker network inspect $(DOCKER_NETWORK_NAME) >/dev/null 2>&1 || docker network create $(DOCKER_NETWORK_NAME)
+	docker network inspect "$(DOCKER_NETWORK_NAME)" >/dev/null 2>&1 || \
+		docker network create "$(DOCKER_NETWORK_NAME)"
 
 volumes:
 	for volume in "$(JH_DATA_VOLUME_HOST)" \
@@ -58,6 +59,8 @@ log:
 
 clean:
 	-docker-compose down
+	! docker network inspect "$(DOCKER_NETWORK_NAME)" >/dev/null 2>&1 || \
+		docker network rm "$(DOCKER_NETWORK_NAME)"
 	for volume in "$(JH_DATA_VOLUME_HOST)" \
 	              "$(JH_DB_VOLUME_HOST)" \
 	              "$(MOODLE_DB_VOLUME_HOST)" \
