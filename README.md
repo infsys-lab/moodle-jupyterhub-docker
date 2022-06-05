@@ -8,6 +8,8 @@ This repository documents a docker sandbox environment to test integration betwe
 
 Since this repository operates on the level of docker containers, working installations of `docker` and `docker-compose` are required. This repository was tested against versions `20.10.16` and `2.5.1` respectively.
 
+In the next steps, we assume that the user executing commands is part of the `docker` group and therefore can execute `docker` commands without superuser privileges (or `sudo`). If this is not the case for your environment, then the commands below must be executed with superuser privileges (or `sudo`).
+
 ## Usage :snowflake:
 
 <details><summary>Build</summary><p> 
