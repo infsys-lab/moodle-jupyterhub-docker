@@ -14,7 +14,7 @@ In the next steps, we assume that the user executing commands is part of the `do
 
 <details><summary>Build</summary><p> 
 
-To build relevant docker images and generate secret data, simply execute:
+To build relevant docker images, networks, volumes and generate secret data, simply execute:
 
 ```
 $ make build
